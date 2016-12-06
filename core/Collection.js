@@ -1,7 +1,8 @@
 function Collection() {
 	// variables
-	this.elements = new Array();
-	// methods
+	var elements = new Array();
+
+	// methods declarations
 	this.add = add;
 	this.addAll = addAll;
 	this.clear = clear;
@@ -13,83 +14,90 @@ function Collection() {
 	this.removeAll = removeAll;
 	this.retainAll = retainAll;
 	this.size = size;
-}
+	this.toArray = toArray;
 
-function add(element) {
-	this.elements.push(element);
-}
-
-function addAll(collection) {
-	while(!collection.isEmpty()){ 
-		this.add(collection.elements.shift());
+	// methods implementations
+	function add(element) {
+		elements.push(element);
 	}
-}
 
-function clear() {
-	this.elements = new Array();
-}
-
-function contains(element) {
-	var tmp = new Array();
-	var contains = false;
-	while(!this.isEmpty()){
-		var e = this.elements.shift();
-		if (e == element) contains = true;
-		tmp.push(e);
-	}
-	this.elements = tmp;
-	return contains;
-}
-
-function containAll(collection) {
-	var containAll = false;
-	while(!collection.isEmpty()){
-		if (this.contains(collection.elements.shift())) ;
-	}
-	return containAll;
-}
-
-function isEmpty() {
-	return this.size() == 0?true:false;
-}
-
-function iterator() {
-	// body...
-}
-
-function remove(element) {
-	var tmp = new Array();
-	while(!this.isEmpty()){
-		var e = this.elements.shift();
-		if (e != element) {
-			tmp.push(e);
+	function addAll(collection) {
+		while(!collection.isEmpty()){ 
+			add(collection.elements.shift());
 		}
 	}
-	this.elements = tmp;
-}
 
-function removeAll(collection) {
-	while(!collection.isEmpty()){ 
-		this.remove(collection.elements.shift());
+	function clear() {
+		elements = new Array();
 	}
-}
 
-function retainAll(collection) {
-	var tmp = new Array();
-	while(!collection.isEmpty()){
-		var clone = new Collection();
-		clone.elements = this.elements.slice(0);
-		var element = collection.elements.shift();
-		while(!clone.isEmpty()){
-			var e = clone.elements.shift();
-			if (e == element) {
+	function contains(element) {
+		var tmp = new Array();
+		var contains = false;
+		while(!isEmpty()){
+			var e = elements.shift();
+			if (e == element) contains = true;
+			tmp.push(e);
+		}
+		elements = tmp;
+		return contains;
+	}
+
+	function containAll(collection) {
+		var containAll = false;
+		while(!collection.isEmpty()){
+			if (contains(collection.elements.shift())) ;
+		}
+		return containAll;
+	}
+
+	function isEmpty() {
+		return size() == 0?true:false;
+	}
+
+	function iterator() {
+		// body...
+	}
+
+	function remove(element) {
+		var tmp = new Array();
+		while(!isEmpty()){
+			var e = elements.shift();
+			if (e != element) {
 				tmp.push(e);
 			}
 		}
+		elements = tmp;
 	}
-	this.elements = tmp;
-}
 
-function size() {
-	return this.elements.length;
+	function removeAll(collection) {
+		while(!collection.isEmpty()){ 
+			remove(collection.elements.shift());
+		}
+	}
+
+	function retainAll(collection) {
+		var tmp = new Array();
+		while(!collection.isEmpty()){
+			var clone = new Collection();
+			clone.elements = elements.slice(0);
+			var element = collection.elements.shift();
+			while(!clone.isEmpty()){
+				var e = clone.elements.shift();
+				if (e == element) {
+					tmp.push(e);
+				}
+			}
+		}
+		elements = tmp;
+	}
+
+	function size() {
+		return elements.length;
+	}
+
+	function toArray() {
+		return elements;
+	}
+
 }
