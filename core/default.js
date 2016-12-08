@@ -7,6 +7,7 @@ var c = new List();
 	c.add(1);
 	c.add(2);
 	c.add(3);
+	c.add(3);
 
 var s = new List();
 

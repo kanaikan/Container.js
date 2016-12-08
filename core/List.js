@@ -17,6 +17,7 @@ function List() {
 	function indexOf(element) {
 		var it = this.iterator();
 		var count = 0;
+		
 		while(it.hasNext()){
 			if (element == it.next()) return count;
 			count++;
@@ -24,12 +25,21 @@ function List() {
 		return -1;
 	}
 
-	function lastIndexOf() {
+	function lastIndexOf(element) {
+		var it = this.iterator();
+		var count = 0
+		var counts = new Array();
 		
+		counts.push(-1);
+		while(it.hasNext()){
+			if (element == it.next()) counts.push(count);
+			count++;
+		}
+		return counts.pop();
 	}
 
-	function subList() {
-		
+	function subList(fromIndex, toIndex) {
+		return this.toArray().slice(fromIndex, toIndex);
 	}
 
 }
