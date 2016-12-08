@@ -1,6 +1,6 @@
 function Iterator(collection) {
 	// varaibles
-	var elements = collection.toArray();
+	var elements = collection.toArray().slice(0);
 	var nextElement = undefined;
 	var checked = false;
 
