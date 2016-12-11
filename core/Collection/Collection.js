@@ -3,6 +3,7 @@ function Collection() {
 	var elements = new Array();
 
 	// methods declarations
+		// default methods
 	this.add = add;
 	this.addAll = addAll;
 	this.clear = clear;
@@ -12,18 +13,25 @@ function Collection() {
 	this.iterator = iterator;
 	this.remove = remove;
 	this.removeAll = removeAll;
+	this.removeIf = removeIf;
 	this.retainAll = retainAll;
 	this.size = size;
 	this.toArray = toArray;
+	this.clone = clone;
+
+		// Container.js methods
+	this.setArray = setArray;
 
 	// methods implementations
+		// default methods
 	function add(element) {
 		elements.push(element);
 	}
 
 	function addAll(collection) {
+		collection = collection.clone();
 		while(!collection.isEmpty()){ 
-			add(collection.elements.shift());
+			add(collection.toArray().shift());
 		}
 	}
 
@@ -45,8 +53,9 @@ function Collection() {
 
 	function containAll(collection) {
 		var containAll = false;
+		collection = collection.clone();
 		while(!collection.isEmpty()){
-			if (contains(collection.elements.shift())) ;
+			if (contains(collection.toArray().shift())) ;
 		}
 		return containAll;
 	}
@@ -72,18 +81,21 @@ function Collection() {
 
 	function removeAll(collection) {
 		while(!collection.isEmpty()){ 
-			remove(collection.elements.shift());
+			remove(collection.toArray().shift());
 		}
+	}
+
+	function removeIf(boolean) {
+		if (boolean) this.toArray() = new Array();
 	}
 
 	function retainAll(collection) {
 		var tmp = new Array();
 		while(!collection.isEmpty()){
-			var clone = new Collection();
-			clone.elements = elements.slice(0);
-			var element = collection.elements.shift();
+			var clone = this.clone();
+			var element = collection.toArray().shift();
 			while(!clone.isEmpty()){
-				var e = clone.elements.shift();
+				var e = clone.toArray().shift();
 				if (e == element) {
 					tmp.push(e);
 				}
@@ -98,6 +110,18 @@ function Collection() {
 
 	function toArray() {
 		return elements;
+	}
+
+	function clone() {
+		var clone = new Collection();
+		clone.setArray(toArray().slice(0));
+		return clone;
+		// return clone(this);
+	}
+
+		// Container.js methods
+	function setArray(arr) {
+		elements = arr;
 	}
 
 }

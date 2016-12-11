@@ -4,7 +4,6 @@ function ArrayList() {
 
 	// methods declarations
 		// this.add = add;
-	this.removeIf = removeIf;
 	this.sort = sort;
 
 	// methods implementations
@@ -12,10 +11,6 @@ function ArrayList() {
 		// function add(index, element) {
 		// 	return element;
 		// }
-
-	function removeIf(boolean) {
-		if (boolean) this.toArray() = new Array();
-	}
 
 	function sort(order) {
 		var array = this.toArray();
