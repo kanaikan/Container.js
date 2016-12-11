@@ -3,14 +3,22 @@ function List() {
 	Collection.call(this);
 	
 	// methods declarations
+	this.set = set;
 	this.get = get;
 	this.indexOf = indexOf;
 	this.lastIndexOf = lastIndexOf;
 	this.subList = subList;
 
 	// methods implementations
+	function set(index, element) {
+		var pre = this.toArray()[index];
+		// if (index < 0 || index > this.size()) return IndexOutOfBoundsException;
+		this.toArray()[index] = element;
+		return pre;
+	}
+
 	function get(index) {
-		if (index < 0 || index >= this.size()) return "IndexOutOfBoundsException";
+		// if (index < 0 || index >= this.size()) return IndexOutOfBoundsException;
 		return this.toArray()[index];
 	}
 
