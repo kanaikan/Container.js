@@ -3,7 +3,7 @@ function LinkedList() {
 	List.call(this);
 
 	// variables
-	var mirror = this.toArray();
+	var mirror = this.toArray().slice(0);
 
 	// methods declarations
 	this.addFirst = addFirst; this.offerFirst = addFirst;
