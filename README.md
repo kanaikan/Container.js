@@ -23,7 +23,7 @@
 		* Output: `I am the first element!`
 
 * Method `sort(order)` to `ArrayList` is different in Container.js:
-	* Argument order should be either `ASCENDING` or `DESCENDING`
+	* Argument `order` should be either `ASCENDING` or `DESCENDING`
 
 ## Contact
 * email: kanaichenshikan@outlook.com
