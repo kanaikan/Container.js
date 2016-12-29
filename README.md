@@ -4,7 +4,7 @@
 ## Download
 * Be aware of that you need to download this by hierarchy.
 	* For example: if you only want `ArrayList.js`, you'll need to download `Container.js` + `List.js` + `ArrayList.js` to make it work. (the hierarchy is exactly based on Java API)
-* If you don't know in what way the hierarchy goes, you can download whole pack or 'Container.js`, which includes everything.
+* If you don't know in what way the hierarchy goes, you can download the whole pack or 'Container.js`, which includes everything.
 
 ## How to use
 ### Declaration
