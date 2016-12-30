@@ -2,33 +2,27 @@ function ArrayList() {
 	// super constructor
 	List.call(this);
 
+	// variables
+	
+
 	// methods declarations
-		// this.add = add;
-	this.sort = sort;
-
-	// methods implementations
-		// overload
-		// function add(index, element) {
-		// 	return element;
-		// }
-
-	function sort(order) {
-		var array = this.toArray();
-		for (var i = 0; i < array.length - 1; i++) {
-			for (var j = i + 1; j < array.length; j++) {
+		// add methods 
+	this.sort = function (order) {
+		for (var i = 0; i < this.toArray().length - 1; i++) {
+			for (var j = i + 1; j < this.toArray().length; j++) {
 				switch(order){
 					case "ASCENDING":
-						if (array[i] > array[j]) {
-							var tmp = array[i];
-							array[i] = array[j];
-							array[j] = tmp;
+						if (this.toArray()[i] > this.toArray()[j]) {
+							var tmp = this.toArray()[i];
+							this.toArray()[i] = this.toArray()[j];
+							this.toArray()[j] = tmp;
 						}
 						break;
 					case "DESCENDING":
-						if (array[i] < array[j]) {
-							var tmp = array[i];
-							array[i] = array[j];
-							array[j] = tmp;
+						if (this.toArray()[i] < this.toArray()[j]) {
+							var tmp = this.toArray()[i];
+							this.toArray()[i] = this.toArray()[j];
+							this.toArray()[j] = tmp;
 						}
 						break;
 					default:

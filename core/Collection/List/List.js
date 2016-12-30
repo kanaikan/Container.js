@@ -1,28 +1,21 @@
 function List() {
 	// super constructor
 	Collection.call(this);
-	
-	// methods declarations
-	this.set = set;
-	this.get = get;
-	this.indexOf = indexOf;
-	this.lastIndexOf = lastIndexOf;
-	this.subList = subList;
 
-	// methods implementations
-	function set(index, element) {
+	// default methods
+	this.set = function (index, element) {
 		var pre = this.toArray()[index];
 		// if (index < 0 || index > this.size()) return IndexOutOfBoundsException;
 		this.toArray()[index] = element;
 		return pre;
 	}
 
-	function get(index) {
+	this.get = function (index) {
 		// if (index < 0 || index >= this.size()) return IndexOutOfBoundsException;
 		return this.toArray()[index];
 	}
 
-	function indexOf(element) {
+	this.indexOf = function (element) {
 		var it = this.iterator();
 		var count = 0;
 		
@@ -33,7 +26,7 @@ function List() {
 		return -1;
 	}
 
-	function lastIndexOf(element) {
+	this.lastIndexOf = function (element) {
 		var it = this.iterator();
 		var count = 0
 		var counts = new Array();
@@ -46,7 +39,7 @@ function List() {
 		return counts.pop();
 	}
 
-	function subList(fromIndex, toIndex) {
+	this.subList = function (fromIndex, toIndex) {
 		return this.toArray().slice(fromIndex, toIndex);
 	}
 

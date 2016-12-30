@@ -3,20 +3,16 @@ function Set() {
 	Collection.call(this);
 
 	// variables
-	var mirror = this.toArray().slice(0);
 
-	// methods declarations
-		// default methods
-	this.hashcode = hashcode;
-
-	// methods implementations
-	function hashcode() {
-		var str = mirror.toString();
-		var h = 0, off = 0;
-		var len = str.length;
-		for (var i = 0; i < len; i++) {
-			h = 31 * h + str.charCodeAt(off++);
-		}
-		return h;
+	// default methods
+	this.hashcode = function () {
+		var str = this.toArray().toString();
+		var hash = 0;
+		for (i = 0; i < str.length; i++) {
+			char = str.charCodeAt(i);
+			hash = ((hash << 5) - hash) + char;
+			hash = hash & hash; // Convert to 32bit integer
+    	}
+		return hash;
 	}
 }

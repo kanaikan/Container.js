@@ -3,61 +3,49 @@ function LinkedList() {
 	List.call(this);
 
 	// variables
-	var mirror = this.toArray().slice(0);
 
-	// methods declarations
-	this.addFirst = addFirst; this.offerFirst = addFirst;
-	this.addLast = addFirst; this.offer = addLast; this.offerLast = addLast;
-	this.element = element; this.peek = element; this.getFirst = element;
-	this.getLast = getLast;
-	this.poll = poll;
-	this.pop = pop;
-	this.push = push;
-	this.removeFirst = removeFirst;
-	this.removeLast = removeFirst;
-	this.descendingIterator = descendingIterator;
+	// default methods
+	this.offerFirst = this.addFirst;
+	this.offer = this.addLast; this.offerLast = this.addLast;
+	this.peek = this.element; this.getFirst = this.element;
 
-	// methods implementations
-
-	function addFirst(element) {
-		mirror.reverse();
-		mirror.push(element);
-		mirror.reverse();
+	this.addFirst = function (element) {
+		this.toArray().unshift(element);
 	}
 
-	function addLast() {
-		mirror.push(element);
+	this.addLast = function (element) {
+		this.toArray().push(element);
 	}
 
-	function element() {
-		return mirror[0];
+	this.element = function () {
+		return this.toArray()[0];
 	}
 
-	function getLast() {
-		var last = mirror[mirror.length];
+	this.getLast = function () {
+		var last = this.toArray()[this.toArray().length];
 	}
 
-	function poll() {
-		return mirror.shift();
+	this.poll = function () {
+		return this.toArray().shift();
 	}
 
-	function pop() {
-		return mirror.pop();
+	this.pop = function () {
+		return this.toArray().pop();
 	}
 
-	function push(element) {
-		mirror.push(element);
+	this.push = function (element) {
+		this.toArray().push(element);
 	}
 
-	function removeFirst() {
-		mirror.shift();
+	this.removeFirst = function () {
+		this.toArray().shift();
 	}
 
-	function removeLast() {
-		mirror.pop();
+	this.removeLast = function () {
+		this.toArray().pop();
 	}
 
-	function descendingIterator() {
+	this.descendingIterator = function () {
 		
 	}
 

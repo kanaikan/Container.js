@@ -2,47 +2,26 @@ function Collection() {
 	// variables
 	var elements = new Array();
 
-	// methods declarations
-		// default methods
-	this.add = add;
-	this.addAll = addAll;
-	this.clear = clear;
-	this.contains = contains;
-	this.containAll = containAll;
-	this.isEmpty = isEmpty;
-	this.iterator = iterator;
-	this.remove = remove;
-	this.removeAll = removeAll;
-	this.removeIf = removeIf;
-	this.retainAll = retainAll;
-	this.size = size;
-	this.toArray = toArray;
-	this.clone = clone;
-
-		// Container.js methods
-	this.setArray = setArray;
-
-	// methods implementations
-		// default methods
-	function add(element) {
+	// default methods
+	this.add = function (element) {
 		elements.push(element);
 	}
 
-	function addAll(collection) {
+	this.addAll = function (collection) {
 		collection = collection.clone();
 		while(!collection.isEmpty()){ 
 			add(collection.toArray().shift());
 		}
 	}
 
-	function clear() {
+	this.clear = function () {
 		elements = new Array();
 	}
 
-	function contains(element) {
+	this.contains = function (element) {
 		var tmp = new Array();
 		var contains = false;
-		while(!isEmpty()){
+		while(!this.isEmpty()){
 			var e = elements.shift();
 			if (e == element) contains = true;
 			tmp.push(e);
@@ -51,7 +30,7 @@ function Collection() {
 		return contains;
 	}
 
-	function containAll(collection) {
+	this.containAll = function (collection) {
 		var containAll = false;
 		collection = collection.clone();
 		while(!collection.isEmpty()){
@@ -60,17 +39,17 @@ function Collection() {
 		return containAll;
 	}
 
-	function isEmpty() {
-		return size() == 0 ? true : false;
+	this.isEmpty = function () {
+		return this.size() == 0 ? true : false;
 	}
 
-	function iterator() {
+	this.iterator = function () {
 		return new Iterator(this);
 	}
 
-	function remove(element) {
+	this.remove = function (element) {
 		var tmp = new Array();
-		while(!isEmpty()){
+		while(!elements.isEmpty()){
 			var e = elements.shift();
 			if (e != element) {
 				tmp.push(e);
@@ -79,17 +58,17 @@ function Collection() {
 		elements = tmp;
 	}
 
-	function removeAll(collection) {
+	this.removeAll = function (collection) {
 		while(!collection.isEmpty()){ 
 			remove(collection.toArray().shift());
 		}
 	}
 
-	function removeIf(boolean) {
+	this.removeIf = function (boolean) {
 		if (boolean) this.toArray() = new Array();
 	}
 
-	function retainAll(collection) {
+	this.retainAll = function (collection) {
 		var tmp = new Array();
 		while(!collection.isEmpty()){
 			var clone = this.clone();
@@ -104,23 +83,22 @@ function Collection() {
 		elements = tmp;
 	}
 
-	function size() {
+	this.size = function () {
 		return elements.length;
 	}
 
-	function toArray() {
+	this.toArray = function () {
 		return elements;
 	}
 
-	function clone() {
+	this.clone = function () {
 		var clone = new Collection();
 		clone.setArray(toArray().slice(0));
 		return clone;
-		// return clone(this);
 	}
 
-		// Container.js methods
-	function setArray(arr) {
+	// Container.js methods
+	this.setArray = function (arr) {
 		elements = arr;
 	}
 

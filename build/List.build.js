@@ -1,28 +1,125 @@
-function List() {
+function Collection() {
+	// variables
+	var elements = new Array();
+
+	// default methods
+	this.add = function (element) {
+		elements.push(element);
+	}
+
+	this.addAll = function (collection) {
+		collection = collection.clone();
+		while(!collection.isEmpty()){ 
+			add(collection.toArray().shift());
+		}
+	}
+
+	this.clear = function () {
+		elements = new Array();
+	}
+
+	this.contains = function (element) {
+		var tmp = new Array();
+		var contains = false;
+		while(!this.isEmpty()){
+			var e = elements.shift();
+			if (e == element) contains = true;
+			tmp.push(e);
+		}
+		elements = tmp;
+		return contains;
+	}
+
+	this.containAll = function (collection) {
+		var containAll = false;
+		collection = collection.clone();
+		while(!collection.isEmpty()){
+			if (contains(collection.toArray().shift())) ;
+		}
+		return containAll;
+	}
+
+	this.isEmpty = function () {
+		return this.size() == 0 ? true : false;
+	}
+
+	this.iterator = function () {
+		return new Iterator(this);
+	}
+
+	this.remove = function (element) {
+		var tmp = new Array();
+		while(!elements.isEmpty()){
+			var e = elements.shift();
+			if (e != element) {
+				tmp.push(e);
+			}
+		}
+		elements = tmp;
+	}
+
+	this.removeAll = function (collection) {
+		while(!collection.isEmpty()){ 
+			remove(collection.toArray().shift());
+		}
+	}
+
+	this.removeIf = function (boolean) {
+		if (boolean) this.toArray() = new Array();
+	}
+
+	this.retainAll = function (collection) {
+		var tmp = new Array();
+		while(!collection.isEmpty()){
+			var clone = this.clone();
+			var element = collection.toArray().shift();
+			while(!clone.isEmpty()){
+				var e = clone.toArray().shift();
+				if (e == element) {
+					tmp.push(e);
+				}
+			}
+		}
+		elements = tmp;
+	}
+
+	this.size = function () {
+		return elements.length;
+	}
+
+	this.toArray = function () {
+		return elements;
+	}
+
+	this.clone = function () {
+		var clone = new Collection();
+		clone.setArray(toArray().slice(0));
+		return clone;
+	}
+
+	// Container.js methods
+	this.setArray = function (arr) {
+		elements = arr;
+	}
+
+}function List() {
 	// super constructor
 	Collection.call(this);
-	
-	// methods declarations
-	this.set = set;
-	this.get = get;
-	this.indexOf = indexOf;
-	this.lastIndexOf = lastIndexOf;
-	this.subList = subList;
 
-	// methods implementations
-	function set(index, element) {
+	// default methods
+	this.set = function (index, element) {
 		var pre = this.toArray()[index];
 		// if (index < 0 || index > this.size()) return IndexOutOfBoundsException;
 		this.toArray()[index] = element;
 		return pre;
 	}
 
-	function get(index) {
+	this.get = function (index) {
 		// if (index < 0 || index >= this.size()) return IndexOutOfBoundsException;
 		return this.toArray()[index];
 	}
 
-	function indexOf(element) {
+	this.indexOf = function (element) {
 		var it = this.iterator();
 		var count = 0;
 		
@@ -33,7 +130,7 @@ function List() {
 		return -1;
 	}
 
-	function lastIndexOf(element) {
+	this.lastIndexOf = function (element) {
 		var it = this.iterator();
 		var count = 0
 		var counts = new Array();
@@ -46,7 +143,7 @@ function List() {
 		return counts.pop();
 	}
 
-	function subList(fromIndex, toIndex) {
+	this.subList = function (fromIndex, toIndex) {
 		return this.toArray().slice(fromIndex, toIndex);
 	}
 
@@ -54,33 +151,27 @@ function List() {
 	// super constructor
 	List.call(this);
 
+	// variables
+	
+
 	// methods declarations
-		// this.add = add;
-	this.sort = sort;
-
-	// methods implementations
-		// overload
-		// function add(index, element) {
-		// 	return element;
-		// }
-
-	function sort(order) {
-		var array = this.toArray();
-		for (var i = 0; i < array.length - 1; i++) {
-			for (var j = i + 1; j < array.length; j++) {
+		// add methods 
+	this.sort = function (order) {
+		for (var i = 0; i < this.toArray().length - 1; i++) {
+			for (var j = i + 1; j < this.toArray().length; j++) {
 				switch(order){
 					case "ASCENDING":
-						if (array[i] > array[j]) {
-							var tmp = array[i];
-							array[i] = array[j];
-							array[j] = tmp;
+						if (this.toArray()[i] > this.toArray()[j]) {
+							var tmp = this.toArray()[i];
+							this.toArray()[i] = this.toArray()[j];
+							this.toArray()[j] = tmp;
 						}
 						break;
 					case "DESCENDING":
-						if (array[i] < array[j]) {
-							var tmp = array[i];
-							array[i] = array[j];
-							array[j] = tmp;
+						if (this.toArray()[i] < this.toArray()[j]) {
+							var tmp = this.toArray()[i];
+							this.toArray()[i] = this.toArray()[j];
+							this.toArray()[j] = tmp;
 						}
 						break;
 					default:
@@ -97,61 +188,49 @@ function List() {
 	List.call(this);
 
 	// variables
-	var mirror = this.toArray().slice(0);
 
-	// methods declarations
-	this.addFirst = addFirst; this.offerFirst = addFirst;
-	this.addLast = addFirst; this.offer = addLast; this.offerLast = addLast;
-	this.element = element; this.peek = element; this.getFirst = element;
-	this.getLast = getLast;
-	this.poll = poll;
-	this.pop = pop;
-	this.push = push;
-	this.removeFirst = removeFirst;
-	this.removeLast = removeFirst;
-	this.descendingIterator = descendingIterator;
+	// default methods
+	this.offerFirst = this.addFirst;
+	this.offer = this.addLast; this.offerLast = this.addLast;
+	this.peek = this.element; this.getFirst = this.element;
 
-	// methods implementations
-
-	function addFirst(element) {
-		mirror.reverse();
-		mirror.push(element);
-		mirror.reverse();
+	this.addFirst = function (element) {
+		this.toArray().unshift(element);
 	}
 
-	function addLast() {
-		mirror.push(element);
+	this.addLast = function (element) {
+		this.toArray().push(element);
 	}
 
-	function element() {
-		return mirror[0];
+	this.element = function () {
+		return this.toArray()[0];
 	}
 
-	function getLast() {
-		var last = mirror[mirror.length];
+	this.getLast = function () {
+		var last = this.toArray()[this.toArray().length];
 	}
 
-	function poll() {
-		return mirror.shift();
+	this.poll = function () {
+		return this.toArray().shift();
 	}
 
-	function pop() {
-		return mirror.pop();
+	this.pop = function () {
+		return this.toArray().pop();
 	}
 
-	function push(element) {
-		mirror.push(element);
+	this.push = function (element) {
+		this.toArray().push(element);
 	}
 
-	function removeFirst() {
-		mirror.shift();
+	this.removeFirst = function () {
+		this.toArray().shift();
 	}
 
-	function removeLast() {
-		mirror.pop();
+	this.removeLast = function () {
+		this.toArray().pop();
 	}
 
-	function descendingIterator() {
+	this.descendingIterator = function () {
 		
 	}
 

@@ -4,10 +4,12 @@ function HashSet() {
 
 	// variables
 
-	// methods declarations
-		// default methods
-	
-
-	// methods implementations
+	// default methods
+	// @Override
+	this.add = function(element) {
+		if (!this.contains(element)) {
+			this.toArray().push(element);
+		}
+	}
 
 }
