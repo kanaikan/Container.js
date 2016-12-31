@@ -11,7 +11,7 @@
 * You can declare a Container variable by entering `var container;`
 
 ### Initialization
-* For example, you can declare variable `container` as an ArrayList `container = new ArrayList();`
+* You can declare variable `container` as an ArrayList `container = new ArrayList();`
 
 ### Calling Method
 * Almost all of the Java Container Methods are implemented in Container.js
