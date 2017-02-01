@@ -1,0 +1,27 @@
+{
+  "name": "container.js",
+  "version": "1.0.0",
+  "description": "JavaScript plugin implementing Java Container",
+  "main": "container.js",
+  "scripts": {
+    "test": "test container.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shikanchen/Container.js.git"
+  },
+  "author": "Gerald Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shikanchen/Container.js/issues"
+  },
+  "homepage": "https://github.com/shikanchen/Container.js#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
