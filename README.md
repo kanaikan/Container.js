@@ -26,4 +26,4 @@
 	* Argument `order` should be either `ASCENDING` or `DESCENDING`
 
 ## Contact
-* email: kanaichenshikan@outlook.com
+* email: jerrychenshikan@gmail.com
