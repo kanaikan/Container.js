@@ -26,4 +26,4 @@
 	* Argument `order` should be either `ASCENDING` or `DESCENDING`
 
 ## Contact
-* email: jerrychenshikan@gmail.com
+* email: github.shikanchen@gmail.com
